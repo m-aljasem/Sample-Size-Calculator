@@ -34,12 +34,16 @@ A professional Vue.js application for calculating sample sizes in medical and he
 - **📋 Calculation History** - Save and manage previous calculations
 - **📊 Interactive Charts** - Real-time visualization with Chart.js
 
-### 📱 Modern UI/UX
+### 📱 Modern UI/UX & PWA Support
 - **🎨 2-Column Layout** - Improved calculator interface with side-by-side inputs and results
 - **📤 Floating Export Button** - Easy access to export functionality
 - **🏠 Clickable Title** - Navigate to home page from anywhere
 - **📱 Responsive Design** - Optimized for all screen sizes
 - **✨ Smooth Animations** - Enhanced user experience
+- **📱 PWA Support** - Installable app with offline capabilities
+- **💾 Offline Functionality** - Works without internet connection
+- **🔄 Auto-Sync** - Calculations sync across devices
+- **🔔 Push Notifications** - Stay updated with new features
 
 ### 📊 Export & Save Features
 - **PDF Reports** - Generate printable calculation reports
@@ -205,22 +209,34 @@ CSS custom properties allow easy theme customization:
 ## 📱 PWA Features
 
 ### Installation
-- **Mobile**: "Add to Home Screen" prompt
+- **Mobile**: "Add to Home Screen" prompt appears automatically
 - **Desktop**: Install button in browser address bar
-- **Automatic**: PWA install prompt after 3 seconds
+- **Automatic**: PWA install prompt after 3 seconds of usage
+- **Manual**: Access PWA features through the app interface
 
 ### Offline Capabilities
-- Caches application shell
-- Caches Google Fonts
-- Works without internet connection
-- Service worker handles updates
+- **Service Worker**: Caches application shell and resources
+- **Offline Calculations**: All statistical calculators work without internet
+- **Cached Resources**: Google Fonts and static assets cached locally
+- **Background Sync**: Calculations sync when connection is restored
+
+### PWA Features
+- **📱 Install Prompt**: Automatic installation suggestion
+- **💾 Offline Mode**: Full functionality without internet
+- **🔄 Auto-Sync**: Data synchronization across devices
+- **🔔 Notifications**: Push notifications for updates
+- **📊 Offline Analytics**: Usage tracking even when offline
+- **🔄 Background Updates**: Automatic app updates
 
 ### Manifest Configuration
-- App name and description
-- Theme colors
-- Icon sets (16x16 to 512x512)
-- Display mode: standalone
-- Orientation: portrait-primary
+- **App Name**: Statistical Sample Size Calculator
+- **Short Name**: Sample Size Calc
+- **Theme Colors**: Professional blue (#007BFF)
+- **Background**: Clean white (#F8F9FA)
+- **Display Mode**: Standalone (app-like experience)
+- **Orientation**: Portrait-primary
+- **Icons**: Complete set from 72x72 to 512x512 pixels
+- **Categories**: Education, Medical, Productivity
 
 ## 📚 Citation System
 

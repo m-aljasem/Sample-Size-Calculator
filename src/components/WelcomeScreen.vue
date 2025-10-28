@@ -107,6 +107,12 @@
             <p>Generate comprehensive reports and documentation for your research studies</p>
           </div>
           
+          <div class="advanced-card" @click="$emit('open-feature', 'pwa')">
+            <div class="advanced-icon">📱</div>
+            <h4>PWA Features</h4>
+            <p>Install the app on your device for offline access and enhanced mobile experience</p>
+          </div>
+          
           <div class="advanced-card" @click="$emit('open-feature', 'about')">
             <div class="advanced-icon">ℹ️</div>
             <h4>About This Project</h4>

@@ -54,14 +54,12 @@
             title="Calculation History">
             📋
           </button>
-          <!-- PWA Features temporarily hidden
           <button 
             class="feature-button" 
             @click="$emit('open-feature', 'pwa')"
             title="PWA Features">
             📱
           </button>
-          -->
           <button 
             class="feature-button" 
             @click="$emit('open-feature', 'reporting')"

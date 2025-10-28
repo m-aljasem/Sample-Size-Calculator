@@ -45,10 +45,8 @@
             v-if="activeFeature === 'history'"
             @load-calculation="loadCalculation" />
           
-          <!-- PWA Features temporarily hidden
           <PWAFeatures 
             v-if="activeFeature === 'pwa'" />
-          -->
           
           <DataVisualization 
             v-if="activeFeature === 'visualization'"
@@ -82,9 +80,8 @@
     </button>
 
     <AppFooter />
-    <!-- PWA Install Prompt temporarily hidden
+    <!-- PWA Install Prompt -->
     <PWAInstallPrompt />
-    -->
   </div>
 </template>
 
@@ -95,10 +92,10 @@ import Sidebar from './components/Sidebar.vue'
 import CalculatorContent from './components/CalculatorContent.vue'
 import AppFooter from './components/AppFooter.vue'
 // PWA components temporarily hidden
-// import PWAInstallPrompt from './components/PWAInstallPrompt.vue'
+import PWAInstallPrompt from './components/PWAInstallPrompt.vue'
 import PowerAnalysis from './components/PowerAnalysis.vue'
 import CalculationHistory from './components/CalculationHistory.vue'
-// import PWAFeatures from './components/PWAFeatures.vue'
+import PWAFeatures from './components/PWAFeatures.vue'
 import DataVisualization from './components/DataVisualization.vue'
 import BayesianAnalysis from './components/BayesianAnalysis.vue'
 import SequentialAnalysis from './components/SequentialAnalysis.vue'
@@ -116,11 +113,10 @@ export default {
     Sidebar,
     CalculatorContent,
     AppFooter,
-    // PWA components temporarily hidden
-    // PWAInstallPrompt,
+    PWAInstallPrompt,
     PowerAnalysis,
     CalculationHistory,
-    // PWAFeatures,
+    PWAFeatures,
     DataVisualization,
     BayesianAnalysis,
     SequentialAnalysis,
