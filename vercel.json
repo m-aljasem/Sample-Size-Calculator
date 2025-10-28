@@ -1,0 +1,23 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "app",
+  "installCommand": "npm install",
+  "framework": "vue",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

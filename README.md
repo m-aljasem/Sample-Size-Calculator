@@ -103,6 +103,30 @@ npm run build
 npm run build:prod
 ```
 
+### Deployment
+
+#### Vercel (Recommended)
+The project is pre-configured for Vercel deployment:
+
+1. **Connect Repository**: Link your GitHub repository to Vercel
+2. **Automatic Deployment**: Vercel will automatically detect the Vue.js framework
+3. **Configuration**: The `vercel.json` file handles all deployment settings
+4. **Custom Domain**: Configure your custom domain in Vercel dashboard
+
+#### Manual Deployment
+```bash
+# Build the project
+npm run build
+
+# The built files will be in the 'app' directory
+# Upload the contents of 'app' to your web server
+```
+
+#### Environment Variables
+For production deployment, ensure these are set:
+- `NODE_ENV=production`
+- `VUE_APP_TITLE=Statistical Sample Size Calculator`
+
 ## 📁 Project Structure
 
 ```
@@ -245,11 +269,18 @@ The application provides comprehensive citation support for academic and researc
 
 ### Available Scripts
 ```bash
-npm run serve      # Development server
-npm run build      # Production build
+npm run serve      # Development server (localhost:8080)
+npm run build      # Production build (outputs to 'app' directory)
 npm run build:prod # Optimized production build
 npm run lint       # ESLint checking
 ```
+
+### Vercel Deployment
+The project is configured for Vercel deployment with:
+- **Output Directory**: `app` (configured in `vercel.json`)
+- **Build Command**: `npm run build`
+- **Framework**: Vue.js
+- **SPA Routing**: Configured with rewrites for client-side routing
 
 ### Adding New Calculators
 1. Add calculator definition to `src/data/calculators.js`
