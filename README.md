@@ -1,6 +1,6 @@
-# Biomedical Sample Size Calculator
+#  Sample Size Calculator
 
-A professional Vue.js application for calculating sample sizes in biomedical research studies. This tool provides statistical calculators for estimation studies, hypothesis testing, and rates/survival analysis with advanced features including multi-language support, PWA capabilities, and dark mode.
+A professional Vue.js application for calculating sample sizes in  research studies. This tool provides statistical calculators for estimation studies, hypothesis testing, and rates/survival analysis with advanced features including multi-language support, PWA capabilities, and dark mode.
 
 ## ✨ Features
 
@@ -267,4 +267,4 @@ For questions, issues, or feature requests:
 
 ---
 
-**Made with ❤️ for the biomedical research community**
+**Made with ❤️ for the  research community**

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🧬 Biomedical Sample Size Calculator - Setup Script"
+echo "🧬  Sample Size Calculator - Setup Script"
 echo "=================================================="
 echo ""
 

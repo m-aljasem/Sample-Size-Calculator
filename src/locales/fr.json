@@ -19,7 +19,8 @@
       "rates": "⏱️ Taux et Survie",
       "backToWelcome": "← Retour à tous les Calculateurs",
       "showCalculators": "☰ Afficher les Calculateurs",
-      "closeMenu": "✕ Fermer le Menu"
+      "closeMenu": "✕ Fermer le Menu",
+      "settings": "⚙️ Paramètres"
     },
     "calculators": {
       "usage": "💡 Quand utiliser ce test",
@@ -127,6 +128,74 @@
       "csv": "Données CSV",
       "copy": "Copier le Texte",
       "save": "Sauvegarder le Calcul"
+    },
+    "calculatorData": {
+      "estimateProportion": {
+        "title": "Proportion Unique",
+        "description": "Calcule la taille d'échantillon nécessaire pour estimer une proportion de population avec une marge d'erreur spécifiée.",
+        "usage": "Utilisez ce test lorsque vous voulez estimer une proportion unique dans une population avec un niveau de précision spécifique (intervalle de confiance). C'est idéal pour les études de prévalence, les enquêtes ou le contrôle qualité où vous devez connaître \"quel pourcentage\" d'une population a une certaine caractéristique.",
+        "example": "Estimer la prévalence du diabète dans une ville, déterminer le pourcentage d'étudiants qui réussissent un examen, ou trouver la proportion de produits défectueux dans la fabrication."
+      },
+      "estimateMean": {
+        "title": "Moyenne Unique",
+        "description": "Calcule la taille d'échantillon nécessaire pour estimer une moyenne de population avec une marge d'erreur spécifiée.",
+        "usage": "Utilisez ce test lorsque vous voulez estimer la valeur moyenne d'une variable continue dans une population avec une précision spécifique. Vous devez connaître ou estimer l'écart-type de la variable.",
+        "example": "Estimer la pression artérielle moyenne chez les adultes, déterminer le poids corporel moyen dans une population, ou calculer les scores moyens aux tests."
+      },
+      "estimateDiff2Proportions": {
+        "title": "Différence Entre 2 Proportions",
+        "description": "Calcule la taille d'échantillon par groupe pour estimer la différence entre deux proportions de population.",
+        "usage": "Utilisez ce test lorsque vous voulez estimer la différence en proportions entre deux groupes indépendants avec une précision spécifiée. C'est utile pour comparer les taux de prévalence ou les pourcentages entre deux populations.",
+        "example": "Comparer les taux de tabagisme entre hommes et femmes, estimer la différence dans les taux de guérison entre deux protocoles de traitement, ou comparer la prévalence de la maladie à travers deux régions."
+      },
+      "estimateOddsRatio": {
+        "title": "Rapport de Cotes",
+        "description": "Calcule la taille d'échantillon pour estimer un Rapport de Cotes avec une précision relative spécifiée.",
+        "usage": "Utilisez ce test pour les études cas-témoins lorsque vous voulez estimer le rapport de cotes (force d'association entre exposition et résultat) avec un niveau de précision spécifique. Les rapports de cotes sont particulièrement utiles lorsque le résultat est rare.",
+        "example": "Estimer l'association entre le tabagisme et le cancer du poumon dans une étude cas-témoins, étudier la relation entre un marqueur génétique et le risque de maladie."
+      },
+      "estimateRelativeRisk": {
+        "title": "Risque Relatif",
+        "description": "Calcule la taille d'échantillon pour estimer un Risque Relatif avec une précision relative spécifiée.",
+        "usage": "Utilisez ce test pour les études de cohorte ou les essais cliniques lorsque vous voulez estimer le risque relatif (ratio de risque) avec une précision spécifique. Le risque relatif compare la probabilité d'un résultat entre les groupes exposés et non exposés.",
+        "example": "Estimer le risque de maladie cardiaque chez les fumeurs vs non-fumeurs dans une étude de cohorte, comparer les taux d'infection entre les groupes vaccinés et non vaccinés."
+      },
+      "estimateCorrelation": {
+        "title": "Coefficient de Corrélation",
+        "description": "Calcule la taille d'échantillon nécessaire pour estimer un coefficient de corrélation.",
+        "usage": "Utilisez ce test lorsque vous voulez estimer la force d'une relation linéaire entre deux variables continues avec un niveau de précision spécifique. C'est courant dans les études observationnelles examinant les associations.",
+        "example": "Estimer la corrélation entre l'âge et la pression artérielle, étudier la relation entre les heures d'étude et les scores aux examens, ou examiner l'association entre la taille et le poids."
+      },
+      "testProportion": {
+        "title": "Proportion Unique",
+        "description": "Compare une proportion observée à une proportion de population hypothétique.",
+        "usage": "Utilisez ce test lorsque vous voulez tester si une proportion de population diffère d'une valeur hypothétique spécifique. Vous devez spécifier à la fois la proportion d'hypothèse nulle et la proportion alternative que vous voulez détecter, avec la puissance souhaitée.",
+        "example": "Tester si un nouveau médicament a un taux de succès différent du standard de 50%, déterminer si le soutien des électeurs dépasse 60%, ou vérifier si les taux de défaut sont en dessous de 5%."
+      },
+      "test2Proportions": {
+        "title": "Deux Proportions",
+        "description": "Compare les proportions entre deux groupes indépendants.",
+        "usage": "Utilisez ce test lorsque vous voulez comparer les proportions entre deux groupes indépendants et tester s'il y a une différence statistiquement significative. C'est l'un des tests les plus courants dans les essais cliniques et les études épidémiologiques.",
+        "example": "Comparer les taux de guérison entre les groupes de traitement et de contrôle, tester si les taux de tabagisme diffèrent entre les sexes, ou comparer les taux d'infection entre deux vaccins."
+      },
+      "test2Means": {
+        "title": "Deux Moyennes",
+        "description": "Compare les moyennes de deux groupes indépendants.",
+        "usage": "Utilisez ce test lors de la comparaison des valeurs moyennes d'une variable continue entre deux groupes indépendants. C'est la base de nombreux essais cliniques et études expérimentales où vous mesurez des résultats continus.",
+        "example": "Comparer la réduction moyenne de la pression artérielle entre deux médicaments, tester si la perte de poids moyenne diffère entre les programmes de régime, ou comparer les scores moyens aux tests entre les méthodes d'enseignement."
+      },
+      "test2Correlations": {
+        "title": "Deux Coefficients de Corrélation",
+        "description": "Compare les coefficients de corrélation entre deux groupes indépendants.",
+        "usage": "Utilisez ce test lorsque vous voulez comparer la force des relations linéaires entre deux variables continues à travers deux groupes différents. Cela aide à déterminer si les associations diffèrent entre les populations.",
+        "example": "Tester si la corrélation entre l'exercice et la pression artérielle diffère entre les adultes jeunes et âgés, comparer la relation entre le temps d'étude et la performance à travers différentes écoles."
+      },
+      "test2Rates": {
+        "title": "Deux Taux d'Incidence",
+        "description": "Compare les taux d'incidence entre deux groupes (ex: dans une étude de cohorte). Calcule les événements requis par groupe.",
+        "usage": "Utilisez ce test pour les études de cohorte ou les essais cliniques où vous comparez le taux auquel les événements se produisent dans le temps entre deux groupes. Cela tient compte des temps de suivi variables et est idéal pour les données de temps jusqu'à l'événement.",
+        "example": "Comparer les taux d'hospitalisation entre les groupes traités et non traités, tester si les taux d'infection par personne-année diffèrent entre les cohortes vaccinées et non vaccinées, ou comparer les taux de mortalité dans les études longitudinales."
+      }
     }
   }
 }

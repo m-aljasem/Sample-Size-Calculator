@@ -1,9 +1,9 @@
 {
   "app": {
-    "title": "Biomedical Sample Size Calculator",
+    "title": " Sample Size Calculator",
     "subtitle": "Professional statistical tools for research design",
     "welcome": {
-      "title": "👋 Welcome to the Biomedical Sample Size Calculator",
+      "title": "👋 Welcome to the  Sample Size Calculator",
       "subtitle": "Choose the type of statistical analysis you need for your research study",
       "estimation": "Estimation Studies",
       "estimationDesc": "Calculate sample sizes for estimating population parameters with specific precision",
@@ -19,7 +19,8 @@
       "rates": "⏱️ Rates & Survival",
       "backToWelcome": "← Back to All Calculators",
       "showCalculators": "☰ Show Calculators",
-      "closeMenu": "✕ Close Menu"
+      "closeMenu": "✕ Close Menu",
+      "settings": "⚙️ Settings"
     },
     "calculators": {
       "usage": "💡 When to Use This Test",
@@ -127,6 +128,74 @@
       "csv": "CSV Data",
       "copy": "Copy Text",
       "save": "Save Calculation"
+    },
+    "calculatorData": {
+      "estimateProportion": {
+        "title": "Single Proportion",
+        "description": "Calculates the sample size needed to estimate a population proportion with a specified margin of error.",
+        "usage": "Use this test when you want to estimate a single proportion in a population with a specific level of precision (confidence interval). This is ideal for prevalence studies, surveys, or quality control where you need to know \"what percentage\" of a population has a certain characteristic.",
+        "example": "Estimating the prevalence of diabetes in a city, determining the percentage of students who pass an exam, or finding the proportion of defective products in manufacturing."
+      },
+      "estimateMean": {
+        "title": "Single Mean",
+        "description": "Calculates the sample size needed to estimate a population mean with a specified margin of error.",
+        "usage": "Use this test when you want to estimate the average value of a continuous variable in a population with a specific precision. You need to know or estimate the standard deviation of the variable.",
+        "example": "Estimating the average blood pressure in adults, determining mean body weight in a population, or calculating average test scores."
+      },
+      "estimateDiff2Proportions": {
+        "title": "Difference Between 2 Proportions",
+        "description": "Calculates the sample size per group to estimate the difference between two population proportions.",
+        "usage": "Use this test when you want to estimate the difference in proportions between two independent groups with a specified precision. This is useful for comparing prevalence rates or percentages between two populations.",
+        "example": "Comparing smoking rates between men and women, estimating the difference in recovery rates between two treatment protocols, or comparing disease prevalence across two regions."
+      },
+      "estimateOddsRatio": {
+        "title": "Odds Ratio",
+        "description": "Calculates sample size for estimating an Odds Ratio with specified relative precision.",
+        "usage": "Use this test for case-control studies when you want to estimate the odds ratio (strength of association between exposure and outcome) with a specific level of precision. Odds ratios are particularly useful when the outcome is rare.",
+        "example": "Estimating the association between smoking and lung cancer in a case-control study, studying the relationship between a genetic marker and disease risk."
+      },
+      "estimateRelativeRisk": {
+        "title": "Relative Risk",
+        "description": "Calculates sample size for estimating a Relative Risk with specified relative precision.",
+        "usage": "Use this test for cohort studies or clinical trials when you want to estimate relative risk (risk ratio) with a specific precision. Relative risk compares the probability of an outcome between exposed and unexposed groups.",
+        "example": "Estimating the risk of heart disease in smokers vs. non-smokers in a cohort study, comparing infection rates between vaccinated and unvaccinated groups."
+      },
+      "estimateCorrelation": {
+        "title": "Correlation Coefficient",
+        "description": "Calculates sample size needed to estimate a correlation coefficient.",
+        "usage": "Use this test when you want to estimate the strength of a linear relationship between two continuous variables with a specific level of precision. This is common in observational studies examining associations.",
+        "example": "Estimating the correlation between age and blood pressure, studying the relationship between study hours and exam scores, or examining the association between height and weight."
+      },
+      "testProportion": {
+        "title": "Single Proportion",
+        "description": "Compares an observed proportion to a hypothesized population proportion.",
+        "usage": "Use this test when you want to test whether a population proportion differs from a specific hypothesized value. You need to specify both the null hypothesis proportion and the alternative proportion you want to detect, along with desired power.",
+        "example": "Testing if a new drug has a success rate different from the standard 50%, determining if voter support exceeds 60%, or checking if defect rates are below 5%."
+      },
+      "test2Proportions": {
+        "title": "Two Proportions",
+        "description": "Compares proportions between two independent groups.",
+        "usage": "Use this test when you want to compare proportions between two independent groups and test if there is a statistically significant difference. This is one of the most common tests in clinical trials and epidemiological studies.",
+        "example": "Comparing cure rates between treatment and control groups, testing if smoking rates differ between genders, or comparing infection rates between two vaccines."
+      },
+      "test2Means": {
+        "title": "Two Means",
+        "description": "Compares the means of two independent groups.",
+        "usage": "Use this test when comparing the average values of a continuous variable between two independent groups. This is the foundation for many clinical trials and experimental studies where you measure continuous outcomes.",
+        "example": "Comparing mean blood pressure reduction between two medications, testing if average weight loss differs between diet programs, or comparing mean test scores between teaching methods."
+      },
+      "test2Correlations": {
+        "title": "Two Correlation Coefficients",
+        "description": "Compares correlation coefficients between two independent groups.",
+        "usage": "Use this test when you want to compare the strength of linear relationships between two continuous variables across two different groups. This helps determine if associations differ between populations.",
+        "example": "Testing if the correlation between exercise and blood pressure differs between young and elderly adults, comparing the relationship between study time and performance across different schools."
+      },
+      "test2Rates": {
+        "title": "Two Incidence Rates",
+        "description": "Compares incidence rates between two groups (e.g., in a cohort study). Calculates required events per group.",
+        "usage": "Use this test for cohort studies or clinical trials where you are comparing the rate at which events occur over time between two groups. This accounts for varying follow-up times and is ideal for time-to-event data.",
+        "example": "Comparing hospitalization rates between treated and untreated groups, testing if infection rates per person-year differ between vaccinated and unvaccinated cohorts, or comparing mortality rates in longitudinal studies."
+      }
     }
   }
 }

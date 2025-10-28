@@ -1,19 +1,19 @@
 <template>
   <div v-if="showExport" class="export-results">
     <div class="export-content">
-      <h3>{{ $t('export.title') }}</h3>
+      <h3>{{ $t('app.export.title') }}</h3>
       <div class="export-options">
         <button class="export-button" @click="exportToPDF">
-          📄 {{ $t('export.pdf') }}
+          📄 {{ $t('app.export.pdf') }}
         </button>
         <button class="export-button" @click="exportToCSV">
-          📊 {{ $t('export.csv') }}
+          📊 {{ $t('app.export.csv') }}
         </button>
         <button class="export-button" @click="copyToClipboard">
-          📋 {{ $t('export.copy') }}
+          📋 {{ $t('app.export.copy') }}
         </button>
         <button class="export-button" @click="saveCalculation">
-          💾 {{ $t('export.save') }}
+          💾 {{ $t('app.export.save') }}
         </button>
       </div>
       <button class="close-button" @click="$emit('close')">✕</button>
@@ -59,7 +59,7 @@ export default {
           </head>
           <body>
             <div class="header">
-              <h1>Biomedical Sample Size Calculator</h1>
+              <h1> Sample Size Calculator</h1>
               <h2>${props.calculatorData.title}</h2>
             </div>
             <div class="section">
@@ -211,6 +211,7 @@ ${props.result.note ? `Note: ${props.result.note}` : ''}
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  color: #333;
 }
 
 .export-button:hover {

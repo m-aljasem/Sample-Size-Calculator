@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🎨 Generating PWA Icons for Biomedical Sample Size Calculator"
+echo "🎨 Generating PWA Icons for  Sample Size Calculator"
 echo "============================================================="
 
 # Create icons directory

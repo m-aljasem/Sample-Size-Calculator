@@ -14,7 +14,7 @@ module.exports = defineConfig({
     extract: process.env.NODE_ENV === 'production'
   },
   pwa: {
-    name: 'Biomedical Sample Size Calculator',
+    name: ' Sample Size Calculator',
     short_name: 'Sample Size Calc',
     themeColor: '#007BFF',
     backgroundColor: '#F8F9FA',
