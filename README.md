@@ -1,8 +1,17 @@
-#  Sample Size Calculator
+# 🧬 Statistical Sample Size Calculator
 
-A professional Vue.js application for calculating sample sizes in  research studies. This tool provides statistical calculators for estimation studies, hypothesis testing, and rates/survival analysis with advanced features including multi-language support, PWA capabilities, and dark mode.
+A professional Vue.js application for calculating sample sizes in medical and healthcare research studies. This tool provides comprehensive statistical calculators for estimation studies, hypothesis testing, and rates/survival analysis with advanced features including multi-language support, interactive visualizations, educational tutorials, and academic citation support.
+
+**Developed by medical professionals with expertise in public health, digital health, and AI, supervised by Prof. Alipasha Meysamie (MD, MPH) - Full Professor at Tehran University of Medical Sciences.**
 
 ## ✨ Features
+
+### 🎓 Educational & Academic Features
+- **📚 Citation Support** - Professional citation formats (APA, Vancouver, MLA, Chicago)
+- **🎓 Educational Tutorials** - Interactive guides for statistical concepts
+- **📊 Data Visualization** - Interactive charts and power analysis tools
+- **📄 Professional Reporting** - Comprehensive report templates
+- **🔬 Academic Supervision** - Developed under Prof. Alipasha Meysamie's guidance
 
 ### 🌍 Multi-Language Support
 - **English** (Default) - LTR
@@ -18,12 +27,19 @@ A professional Vue.js application for calculating sample sizes in  research stud
 - Smooth transitions and optimized colors
 - Not activated automatically - user must click to enable
 
-### 📱 Progressive Web App (PWA)
-- **Installable** - Add to home screen on mobile/desktop
-- **Offline Support** - Works without internet connection
-- **App-like Experience** - Standalone mode
-- **Service Worker** - Caches resources for offline use
-- **Responsive Design** - Optimized for all screen sizes
+### 📊 Advanced Statistical Features
+- **⚡ Power Analysis** - Interactive power curves and sample size analysis
+- **🧠 Bayesian Analysis** - Bayesian methods with prior distributions
+- **📈 Sequential Analysis** - Adaptive and sequential study designs
+- **📋 Calculation History** - Save and manage previous calculations
+- **📊 Interactive Charts** - Real-time visualization with Chart.js
+
+### 📱 Modern UI/UX
+- **🎨 2-Column Layout** - Improved calculator interface with side-by-side inputs and results
+- **📤 Floating Export Button** - Easy access to export functionality
+- **🏠 Clickable Title** - Navigate to home page from anywhere
+- **📱 Responsive Design** - Optimized for all screen sizes
+- **✨ Smooth Animations** - Enhanced user experience
 
 ### 📊 Export & Save Features
 - **PDF Reports** - Generate printable calculation reports
@@ -57,6 +73,27 @@ npm run serve
 
 The application will be available at `http://localhost:8080`
 
+### Live Demo
+🌐 **Access the live application**: [ssc.aljasem.eu.org](https://ssc.aljasem.eu.org)
+
+## 🆕 Recent Updates
+
+### Latest Features (2024)
+- **📚 Citation System**: Professional citation formats with one-click copying
+- **🎨 UI/UX Improvements**: 2-column layout, floating export button, clickable title
+- **📊 Enhanced Visualizations**: Interactive charts with Chart.js integration
+- **🎓 Educational Content**: Comprehensive tutorials and learning resources
+- **📄 About Page**: Detailed project information and team profiles
+- **🔧 Technical Enhancements**: Improved performance and error handling
+- **📱 Mobile Optimization**: Better responsive design and mobile experience
+
+### Key Improvements
+- **Calculator Interface**: Side-by-side input and result layout
+- **Navigation**: Clickable project title for easy home navigation
+- **Export Functionality**: Floating export button for better accessibility
+- **Academic Support**: Professional citation system for research use
+- **Team Information**: Comprehensive about page with project details
+
 ### Production Build
 ```bash
 # Build for production
@@ -72,13 +109,16 @@ npm run build:prod
 src/
 ├── components/              # Vue components
 │   ├── AppHeader.vue        # Header with language/theme controls
-│   ├── WelcomeScreen.vue   # Landing page
+│   ├── WelcomeScreen.vue   # Landing page with citation box
 │   ├── Sidebar.vue         # Navigation sidebar
-│   ├── CalculatorContent.vue # Main calculator interface
+│   ├── CalculatorContent.vue # Main calculator interface (2-column layout)
+│   ├── AboutPage.vue       # About page with team info and citation
+│   ├── CitationModal.vue   # Citation modal with copy functionality
+│   ├── EducationalTutorials.vue # Interactive tutorials
+│   ├── DataVisualization.vue # Charts and power analysis
 │   ├── AppFooter.vue       # Footer
 │   ├── LanguageSwitcher.vue # Language selection
 │   ├── ThemeSwitcher.vue   # Dark/light mode toggle
-│   ├── PWAInstallPrompt.vue # PWA installation prompt
 │   └── ExportResults.vue   # Export functionality
 ├── data/                   # Data and configurations
 │   └── calculators.js      # Calculator definitions
@@ -157,6 +197,29 @@ CSS custom properties allow easy theme customization:
 - Icon sets (16x16 to 512x512)
 - Display mode: standalone
 - Orientation: portrait-primary
+
+## 📚 Citation System
+
+### Professional Citation Formats
+The application provides comprehensive citation support for academic and research use:
+
+- **APA Style**: `AlJasem, M., & Meysamie, A. (2024). Statistical Sample Size Calculator [Web application]. Retrieved from https://ssc.aljasem.eu.org`
+- **Vancouver Style**: `AlJasem M, Meysamie A. Statistical Sample Size Calculator [Internet]. 2024 [cited 2024]. Available from: https://ssc.aljasem.eu.org`
+- **MLA Style**: `AlJasem, Mohammad, and Alipasha Meysamie. Statistical Sample Size Calculator. Web application, 2024, ssc.aljasem.eu.org.`
+- **Chicago Style**: `AlJasem, Mohammad, and Alipasha Meysamie. Statistical Sample Size Calculator. Web application. 2024. https://ssc.aljasem.eu.org.`
+
+### Citation Features
+- **One-click copying** for each citation format
+- **Visual feedback** with success/error messages
+- **Cross-browser compatibility** with fallback support
+- **Citation guidelines** for proper academic referencing
+- **Modal interface** for easy access and copying
+
+### Usage Guidelines
+- Include the current date when you accessed the tool
+- Specify the version or date of the calculation if relevant to your study
+- Mention any specific calculators or methods used
+- Consider including a brief description of how the tool was used in your methodology
 
 ## 📊 Export Features
 
@@ -246,10 +309,38 @@ npm run build -- --report
 
 MIT License - see LICENSE file for details
 
-## 👥 Authors
+## 👥 Team & Authors
 
-- **Mohamad AlJasem**
-- **Prof. Alipasha Meysamie** - Tehran University of Medical Sciences
+### Development Team
+
+**Mohammad AlJasem** - MD, MPH, MSc | Digital Health Specialist
+- Medical doctor and public health specialist from Syria
+- Advanced degrees in public health and digital health
+- Expertise in AI, digital health, and full-stack development
+- Passionate about combining medical expertise with technology
+- Contact: mohamad@aljasem.eu.org
+
+**Prof. Alipasha Meysamie** - MD, MPH | Full Professor & Project Supervisor
+- Full Professor at Tehran University of Medical Sciences
+- Department of Community Medicine
+- Author of multiple books on statistical analysis
+- Supervisor of this project, providing expert guidance
+- Expertise in statistical methodology and clinical research design
+- Contact: Available through Tehran University of Medical Sciences
+
+### Project Supervision
+This project is developed under the academic supervision of Prof. Alipasha Meysamie, ensuring:
+- **Academic rigor** and methodological soundness
+- **Statistical accuracy** in all calculations
+- **Professional standards** in healthcare research
+- **Educational value** for researchers and clinicians
+
+### Motivation & Objectives
+- **Healthcare Research Impact**: Empowering researchers with accurate statistical tools
+- **Global Accessibility**: Free, open-access tool for worldwide research community
+- **Educational Impact**: Interactive tutorials and educational resources
+- **AI & Digital Health Innovation**: Combining medical expertise with modern technology
+- **Academic Excellence**: Under professional supervision for quality assurance
 
 ## 🙏 Acknowledgments
 
@@ -258,13 +349,28 @@ MIT License - see LICENSE file for details
 - Workbox for PWA capabilities
 - Inter font family for typography
 
-## 📞 Support
+## 📞 Support & Contact
 
+### Getting Help
 For questions, issues, or feature requests:
-- Create an issue on GitHub
-- Contact the authors directly
-- Check the documentation
+- **GitHub Issues**: Create an issue on the project repository
+- **Email**: mohamad@aljasem.eu.org
+- **Documentation**: ssc.aljasem.eu.org
+- **Live Demo**: [ssc.aljasem.eu.org](https://ssc.aljasem.eu.org)
+
+### Academic Inquiries
+For academic collaboration or research-related questions:
+- **Prof. Alipasha Meysamie**: Available through Tehran University of Medical Sciences
+- **Department**: Community Medicine, Tehran University of Medical Sciences
+- **Research Focus**: Statistical methodology, clinical research design, epidemiological studies
+
+### Technical Support
+- **Development**: Mohammad AlJasem (mohamad@aljasem.eu.org)
+- **GitHub Repository**: github.com/m-aljasem/sample-size-calculator
+- **Documentation**: ssc.aljasem.eu.org
 
 ---
 
-**Made with ❤️ for the  research community**
+**Made with ❤️ for the medical and healthcare research community**
+
+*Developed by medical professionals, for medical professionals - ensuring accuracy, reliability, and academic excellence in statistical sample size calculations.*
