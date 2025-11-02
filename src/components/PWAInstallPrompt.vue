@@ -1,17 +1,19 @@
 <template>
   <div v-if="showInstallPrompt" class="pwa-install-prompt">
     <div class="pwa-content">
-      <div class="pwa-icon">📱</div>
+      <div class="pwa-icon">
+        <img src="/icons/icons/icon-192x192.png" alt="App Icon" />
+      </div>
       <div class="pwa-text">
-        <h3>{{ $t('pwa.installTitle') }}</h3>
-        <p>{{ $t('pwa.installDescription') }}</p>
+        <h3>{{ t('pwa.installTitle') }}</h3>
+        <p>{{ t('pwa.installDescription') }}</p>
       </div>
       <div class="pwa-actions">
         <button class="pwa-button install" @click="installApp">
-          {{ $t('pwa.install') }}
+          {{ t('pwa.install') }}
         </button>
         <button class="pwa-button dismiss" @click="dismissPrompt">
-          {{ $t('pwa.dismiss') }}
+          {{ t('pwa.dismiss') }}
         </button>
       </div>
     </div>
@@ -20,10 +22,12 @@
 
 <script>
 import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 export default {
   name: 'PWAInstallPrompt',
   setup() {
+    const { t } = useI18n()
     const showInstallPrompt = ref(false)
     let deferredPrompt = null
     
@@ -74,6 +78,7 @@ export default {
     }
     
     return {
+      t,
       showInstallPrompt,
       installApp,
       dismissPrompt
@@ -103,8 +108,22 @@ export default {
 }
 
 .pwa-icon {
-  font-size: 2rem;
   flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pwa-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 2px;
 }
 
 .pwa-text {
