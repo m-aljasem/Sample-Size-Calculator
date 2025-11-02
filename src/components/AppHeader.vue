@@ -3,7 +3,10 @@
     <div class="header-content">
       <div class="header-main">
         <div class="title-section">
-          <h1 class="clickable-title" @click="$emit('navigate-home')">🧬 {{ $t('app.title') }}</h1>
+          <h1 class="clickable-title" @click="$emit('navigate-home')">
+            <img src="/icons/icons/icon-32x32.png" alt="App Icon" class="header-logo" />
+            {{ $t('app.title') }}
+          </h1>
           <div class="header-subtitle">{{ $t('app.subtitle') }}</div>
         </div>
         <button 
@@ -175,11 +178,21 @@ export default {
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .clickable-title:hover {
   color: #0056b3;
   transform: scale(1.02);
+}
+
+.header-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .header-subtitle {

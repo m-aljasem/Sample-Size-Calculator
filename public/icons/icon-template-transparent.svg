@@ -1,0 +1,53 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007BFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0056b3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- No background rectangle - transparent background -->
+  
+  <!-- Calculator icon -->
+  <rect x="80" y="120" width="352" height="400" rx="20" fill="white" stroke="#007BFF" stroke-width="8"/>
+  
+  <!-- Screen -->
+  <rect x="100" y="140" width="312" height="80" rx="10" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2"/>
+  
+  <!-- Sample size text -->
+  <text x="256" y="190" font-family="Inter, sans-serif" font-size="24" font-weight="600" text-anchor="middle" fill="#007BFF">n = ?</text>
+  
+  <!-- Calculator buttons -->
+  <g fill="#007BFF">
+    <!-- Row 1 -->
+    <rect x="120" y="250" width="60" height="50" rx="8" fill="#e3f2fd"/>
+    <text x="150" y="280" font-family="Inter, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#007BFF">α</text>
+    
+    <rect x="200" y="250" width="60" height="50" rx="8" fill="#e3f2fd"/>
+    <text x="230" y="280" font-family="Inter, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#007BFF">β</text>
+    
+    <rect x="280" y="250" width="60" height="50" rx="8" fill="#e3f2fd"/>
+    <text x="310" y="280" font-family="Inter, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#007BFF">δ</text>
+    
+    <rect x="360" y="250" width="60" height="50" rx="8" fill="#e3f2fd"/>
+    <text x="390" y="280" font-family="Inter, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#007BFF">σ</text>
+    
+    <!-- Row 2 -->
+    <rect x="120" y="320" width="60" height="50" rx="8" fill="#e3f2fd"/>
+    <text x="150" y="350" font-family="Inter, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#007BFF">μ</text>
+    
+    <rect x="200" y="320" width="60" height="50" rx="8" fill="#e3f2fd"/>
+    <text x="230" y="350" font-family="Inter, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#007BFF">p</text>
+    
+    <rect x="280" y="320" width="60" height="50" rx="8" fill="#e3f2fd"/>
+    <text x="310" y="350" font-family="Inter, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#007BFF">r</text>
+    
+    <rect x="360" y="320" width="60" height="50" rx="8" fill="#e3f2fd"/>
+    <text x="390" y="350" font-family="Inter, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#007BFF">z</text>
+    
+    <!-- Calculate button -->
+    <rect x="160" y="390" width="192" height="60" rx="30" fill="#007BFF"/>
+    <text x="256" y="430" font-family="Inter, sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="white">CALCULATE</text>
+  </g>
+</svg>
+
