@@ -5,15 +5,15 @@
         <img src="/icons/icons/icon-192x192.png" alt="App Icon" />
       </div>
       <div class="pwa-text">
-        <h3>{{ $t('pwa.installTitle') }}</h3>
-        <p>{{ $t('pwa.installDescription') }}</p>
+        <h3>Install App</h3>
+        <p>Install this app on your device for quick access and offline use.</p>
       </div>
       <div class="pwa-actions">
         <button class="pwa-button install" @click="installApp">
-          {{ $t('pwa.install') }}
+          Install
         </button>
         <button class="pwa-button dismiss" @click="dismissPrompt">
-          {{ $t('pwa.dismiss') }}
+          Not Now
         </button>
       </div>
     </div>
