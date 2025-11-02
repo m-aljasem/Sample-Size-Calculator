@@ -5,15 +5,15 @@
         <img src="/icons/icons/icon-192x192.png" alt="App Icon" />
       </div>
       <div class="pwa-text">
-        <h3>{{ t('pwa.installTitle') }}</h3>
-        <p>{{ t('pwa.installDescription') }}</p>
+        <h3>{{ $t('pwa.installTitle') }}</h3>
+        <p>{{ $t('pwa.installDescription') }}</p>
       </div>
       <div class="pwa-actions">
         <button class="pwa-button install" @click="installApp">
-          {{ t('pwa.install') }}
+          {{ $t('pwa.install') }}
         </button>
         <button class="pwa-button dismiss" @click="dismissPrompt">
-          {{ t('pwa.dismiss') }}
+          {{ $t('pwa.dismiss') }}
         </button>
       </div>
     </div>
@@ -22,12 +22,10 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 export default {
   name: 'PWAInstallPrompt',
   setup() {
-    const { t } = useI18n()
     const showInstallPrompt = ref(false)
     let deferredPrompt = null
     
@@ -81,7 +79,6 @@ export default {
     }
     
     return {
-      t,
       showInstallPrompt,
       installApp,
       dismissPrompt
