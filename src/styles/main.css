@@ -357,6 +357,10 @@ body {
     font-size: 3rem;
     margin-bottom: 1rem;
     opacity: 0.5;
+    /* Ensure emojis are visible - no gradient text fill */
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
+    -webkit-background-clip: initial !important;
 }
 
 .result-placeholder p {
@@ -605,6 +609,10 @@ body {
     border-radius: 8px;
     font-size: 0.95rem;
     color: #20C997;
+    /* Ensure emojis are visible - no gradient text fill */
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
+    -webkit-background-clip: initial !important;
 }
 
 .result-container {
@@ -663,6 +671,10 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    /* Ensure emojis are visible - no gradient text fill */
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
+    -webkit-background-clip: initial !important;
 }
 
 @keyframes scaleIn {
@@ -714,6 +726,10 @@ body {
     font-size: 2rem;
     font-weight: 700;
     color: #20C997;
+    /* Ensure emojis are visible - no gradient text fill */
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
+    -webkit-background-clip: initial !important;
 }
 
 .footer {

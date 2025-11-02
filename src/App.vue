@@ -94,6 +94,8 @@
     <AppFooter />
     <!-- PWA Install Prompt -->
     <PWAInstallPrompt />
+    <!-- Mobile Redirect Prompt -->
+    <MobileRedirectPrompt />
   </div>
 </template>
 
@@ -118,6 +120,7 @@ import SequentialAnalysis from './components/SequentialAnalysis.vue'
 import EducationalTutorials from './components/EducationalTutorials.vue'
 import ReportingTemplates from './components/ReportingTemplates.vue'
 import AboutPage from './components/AboutPage.vue'
+import MobileRedirectPrompt from './components/MobileRedirectPrompt.vue'
 import { defaultInputs } from './data/calculators.js'
 import * as calculators from './utils/calculators.js'
 
@@ -142,7 +145,8 @@ export default {
     SequentialAnalysis,
     EducationalTutorials,
     ReportingTemplates,
-    AboutPage
+    AboutPage,
+    MobileRedirectPrompt
   },
   data() {
     return {

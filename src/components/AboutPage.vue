@@ -331,6 +331,10 @@ export default {
   color: #333;
   font-size: 1.8rem;
   margin: 0;
+  /* Ensure emojis are visible - no gradient text fill */
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+  -webkit-background-clip: initial !important;
   font-weight: 600;
   display: flex;
   align-items: center;

@@ -75,7 +75,16 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-.header h1 {
+/* Apply gradient only to text, not emojis */
+.header h1,
+.clickable-title {
+  /* Don't apply gradient to entire h1 since it contains emojis */
+  color: #007BFF;
+}
+
+/* If you want gradient text, wrap text in a span */
+.header h1 .text-gradient,
+.clickable-title .text-gradient {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -116,6 +125,8 @@ body {
   color: white;
   transform: translateX(8px) scale(1.02);
   box-shadow: var(--shadow-lg);
+  /* Ensure emojis stay visible on hover */
+  -webkit-text-fill-color: initial;
 }
 
 /* Enhanced Input Fields */
@@ -219,6 +230,9 @@ body {
 .section-title {
   position: relative;
   padding-left: 1rem;
+  /* Ensure emojis are visible - no gradient text fill */
+  color: #007BFF;
+  -webkit-text-fill-color: initial;
 }
 
 .section-title::before {
@@ -237,6 +251,8 @@ body {
 .nav-item {
   position: relative;
   overflow: hidden;
+  /* Ensure emojis are visible - no gradient text fill */
+  -webkit-text-fill-color: initial;
 }
 
 .nav-item::before {
@@ -261,6 +277,7 @@ body {
   border-left: 4px solid var(--primary);
   font-weight: 600;
   color: var(--primary);
+  -webkit-text-fill-color: initial;
 }
 
 /* Enhanced Tooltips */
@@ -548,4 +565,30 @@ select,
 .category-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Global rule: Never apply text fill to elements that might contain emojis */
+h1, h2, h3, h4, h5, h6,
+.calculator-title,
+.section-title,
+.nav-item,
+.option-button,
+.category-icon,
+.clickable-title,
+.feature-button,
+.mobile-menu-toggle,
+.category-card h3,
+.result-item-value,
+.result-value,
+.result-adjusted,
+.placeholder-icon,
+.about-section h3 {
+  /* Ensure emojis are always visible - override any gradient text fill */
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+  -webkit-background-clip: initial !important;
+  color: inherit; /* Preserve original color */
+}
+
+/* Note: result-value and result-item-value contain emojis (🎯), so we can't use gradient text fill */
+/* They will use regular color styling instead */
 
