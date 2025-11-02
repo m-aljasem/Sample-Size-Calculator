@@ -59,17 +59,20 @@ export default {
     })
     
     const installApp = async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt()
-        const { outcome } = await deferredPrompt.userChoice
-        
-        if (outcome === 'accepted') {
-          console.log('PWA installed successfully')
-        }
-        
-        deferredPrompt = null
-        showInstallPrompt.value = false
+      if (!deferredPrompt) {
+        console.warn('PWA install prompt not available')
+        return
       }
+      
+      deferredPrompt.prompt()
+      const { outcome } = await deferredPrompt.userChoice
+      
+      if (outcome === 'accepted') {
+        console.log('PWA installed successfully')
+      }
+      
+      deferredPrompt = null
+      showInstallPrompt.value = false
     }
     
     const dismissPrompt = () => {
