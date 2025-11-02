@@ -304,6 +304,7 @@ export default {
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
+  animation: fadeIn 0.5s ease;
 }
 
 .feature-header {
@@ -332,12 +333,14 @@ export default {
 }
 
 .scenario-card {
-  background: #F8F9FA;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%);
+  backdrop-filter: blur(10px);
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .scenario-card:hover {
@@ -386,12 +389,19 @@ export default {
 .add-scenario-btn {
   width: 100%;
   padding: 1rem;
-  background: #20C997;
+  background: linear-gradient(135deg, #20C997 0%, #1abc9c 100%);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
+  transition: all 0.3s ease;
+}
+
+.add-scenario-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(32, 201, 151, 0.4);
 }
 
 .scenario-editor {
@@ -499,10 +509,18 @@ export default {
 }
 
 .summary-card {
-  background: #F8F9FA;
-  padding: 1rem;
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
   text-align: center;
+  border: 2px solid rgba(0, 123, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.2);
+  border-color: rgba(0, 123, 255, 0.4);
 }
 
 .summary-label {

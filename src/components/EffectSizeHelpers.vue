@@ -380,6 +380,7 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  animation: fadeIn 0.5s ease;
 }
 
 .feature-header {
@@ -394,10 +395,19 @@ export default {
 }
 
 .helper-section {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.helper-section:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
 }
 
 .converter-tabs {
@@ -415,11 +425,32 @@ export default {
   cursor: pointer;
   font-weight: 500;
   color: #6C757D;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
 }
 
 .tab-button.active {
   color: #007BFF;
-  border-bottom-color: #007BFF;
+}
+
+.tab-button.active::after {
+  width: 100%;
+}
+
+.tab-button:hover {
+  color: #007BFF;
+  transform: translateY(-2px);
 }
 
 .converter-form, .calc-form {
@@ -460,11 +491,24 @@ export default {
 
 .result-box {
   grid-column: 1 / -1;
-  background: #E7F3FF;
-  padding: 1rem;
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
   margin-top: 1rem;
   border-left: 4px solid #007BFF;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+  animation: slideInRight 0.5s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .interpretation {
@@ -501,9 +545,17 @@ export default {
 }
 
 .benchmark-card {
-  background: #F8F9FA;
-  padding: 1rem;
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 123, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.benchmark-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.15);
+  border-color: rgba(0, 123, 255, 0.3);
 }
 
 .benchmark-card h4 {
@@ -564,17 +616,20 @@ export default {
 }
 
 .guide-size.small {
-  background: #E7F3FF;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.2) 0%, rgba(102, 126, 234, 0.2) 100%);
   color: #0056B3;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
 }
 
 .guide-size.medium {
-  background: #FFF3CD;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 235, 59, 0.2) 100%);
   color: #856404;
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
 }
 
 .guide-size.large {
-  background: #D1ECF1;
+  background: linear-gradient(135deg, rgba(32, 201, 151, 0.2) 0%, rgba(26, 188, 156, 0.2) 100%);
   color: #0C5460;
+  box-shadow: 0 4px 12px rgba(32, 201, 151, 0.2);
 }
 </style>

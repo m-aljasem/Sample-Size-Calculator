@@ -367,6 +367,18 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .feature-header {
@@ -380,11 +392,19 @@ export default {
 }
 
 .selector-section, .base-parameters, .sensitivity-params {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: 16px;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.selector-section:hover, .base-parameters:hover, .sensitivity-params:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
 }
 
 .calculator-select {
@@ -484,9 +504,11 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-bottom: 2rem;
-  padding: 1rem;
-  background: #F8F9FA;
-  border-radius: 8px;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+  border-radius: 12px;
+  border: 2px solid rgba(0, 123, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
 }
 
 .summary-item {
@@ -539,12 +561,20 @@ export default {
 
 .export-btn {
   padding: 0.75rem 2rem;
-  background: #007BFF;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+.export-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.5);
 }
 
 .info-text {
