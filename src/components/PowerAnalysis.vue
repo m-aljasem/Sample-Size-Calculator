@@ -64,6 +64,26 @@
       <div class="power-chart">
         <canvas ref="powerChart" width="400" height="200"></canvas>
       </div>
+      
+      <!-- Enhanced Power Curves with Multiple Effect Sizes -->
+      <div class="enhanced-curves" v-if="showEnhancedCurves">
+        <h4>Power Curves by Effect Size</h4>
+        <div class="curve-controls">
+          <label>
+            <input type="checkbox" v-model="showSmallEffect"> Small (d=0.2)
+          </label>
+          <label>
+            <input type="checkbox" v-model="showMediumEffect" checked> Medium (d=0.5)
+          </label>
+          <label>
+            <input type="checkbox" v-model="showLargeEffect"> Large (d=0.8)
+          </label>
+        </div>
+        <canvas ref="enhancedChart" width="600" height="400"></canvas>
+      </div>
+      <button @click="showEnhancedCurves = !showEnhancedCurves" class="toggle-curves-btn">
+        {{ showEnhancedCurves ? 'Hide' : 'Show' }} Enhanced Power Curves
+      </button>
     </div>
     
     <div class="power-recommendations">
@@ -84,7 +104,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, nextTick } from 'vue'
 
 export default {
   name: 'PowerAnalysis',
@@ -95,6 +115,11 @@ export default {
     const testType = ref('two-tailed')
     const power = ref(null)
     const powerChart = ref(null)
+    const enhancedChart = ref(null)
+    const showEnhancedCurves = ref(false)
+    const showSmallEffect = ref(false)
+    const showMediumEffect = ref(true)
+    const showLargeEffect = ref(false)
     
     const calculatePower = () => {
       if (!sampleSize.value || !effectSize.value || !alpha.value) {
@@ -176,11 +201,122 @@ export default {
       ctx.fillText('Power: ' + (power.value * 100).toFixed(1) + '%', 10, 20)
     }
     
+    const drawEnhancedCurves = () => {
+      if (!enhancedChart.value || !showEnhancedCurves.value) return
+      
+      const canvas = enhancedChart.value
+      const ctx = canvas.getContext('2d')
+      const width = canvas.width
+      const height = canvas.height
+      
+      ctx.clearRect(0, 0, width, height)
+      
+      const padding = 50
+      const chartWidth = width - 2 * padding
+      const chartHeight = height - 2 * padding
+      
+      // Draw axes
+      ctx.strokeStyle = '#666'
+      ctx.lineWidth = 1
+      ctx.beginPath()
+      ctx.moveTo(padding, height - padding)
+      ctx.lineTo(width - padding, height - padding)
+      ctx.moveTo(padding, height - padding)
+      ctx.lineTo(padding, padding)
+      ctx.stroke()
+      
+      // Sample size range for x-axis
+      const minN = 10
+      const maxN = 200
+      const nRange = maxN - minN
+      
+      // Power range for y-axis (0 to 1)
+      const minPower = 0
+      const maxPower = 1
+      const powerRange = maxPower - minPower
+      
+      const effects = []
+      if (showSmallEffect.value) effects.push({ d: 0.2, color: '#95E1D3', label: 'Small (d=0.2)' })
+      if (showMediumEffect.value) effects.push({ d: 0.5, color: '#20C997', label: 'Medium (d=0.5)' })
+      if (showLargeEffect.value) effects.push({ d: 0.8, color: '#007BFF', label: 'Large (d=0.8)' })
+      
+      effects.forEach(effect => {
+        ctx.strokeStyle = effect.color
+        ctx.lineWidth = 2
+        ctx.beginPath()
+        
+        const zAlpha = testType.value === 'two-tailed' ? 1.96 : 1.645
+        
+        for (let i = 0; i <= chartWidth; i++) {
+          const n = minN + (i / chartWidth) * nRange
+          const zBeta = Math.sqrt(n) * effect.d - zAlpha
+          const powerValue = Math.max(0, Math.min(1, 0.5 * (1 + Math.sign(zBeta) * Math.sqrt(1 - Math.exp(-2 * zBeta * zBeta / Math.PI)))))
+          
+          const x = padding + i
+          const y = height - padding - (powerValue / powerRange) * chartHeight
+          
+          if (i === 0) {
+            ctx.moveTo(x, y)
+          } else {
+            ctx.lineTo(x, y)
+          }
+        }
+        ctx.stroke()
+      })
+      
+      // Draw 80% power line
+      ctx.strokeStyle = '#FF6B6B'
+      ctx.lineWidth = 1
+      ctx.setLineDash([5, 5])
+      ctx.beginPath()
+      const power80Y = height - padding - (0.8 / powerRange) * chartHeight
+      ctx.moveTo(padding, power80Y)
+      ctx.lineTo(width - padding, power80Y)
+      ctx.stroke()
+      ctx.setLineDash([])
+      
+      // Labels
+      ctx.fillStyle = '#333'
+      ctx.font = '12px Arial'
+      ctx.textAlign = 'center'
+      ctx.fillText('Sample Size (n)', width / 2, height - 10)
+      ctx.save()
+      ctx.translate(15, height / 2)
+      ctx.rotate(-Math.PI / 2)
+      ctx.textAlign = 'center'
+      ctx.fillText('Power', 0, 0)
+      ctx.restore()
+      
+      // Legend
+      let legendY = padding + 10
+      effects.forEach(effect => {
+        ctx.fillStyle = effect.color
+        ctx.fillRect(width - 120, legendY, 15, 15)
+        ctx.fillStyle = '#333'
+        ctx.textAlign = 'left'
+        ctx.fillText(effect.label, width - 100, legendY + 12)
+        legendY += 20
+      })
+      
+      ctx.fillStyle = '#FF6B6B'
+      ctx.fillRect(width - 120, legendY, 15, 2)
+      ctx.fillStyle = '#333'
+      ctx.fillText('80% Power', width - 100, legendY + 8)
+    }
+    
     watch([sampleSize, effectSize, alpha, testType], calculatePower, { immediate: true })
     watch(power, drawPowerChart)
+    watch([showEnhancedCurves, showSmallEffect, showMediumEffect, showLargeEffect, testType], () => {
+      nextTick(() => {
+        drawEnhancedCurves()
+      })
+    })
     
     onMounted(() => {
       calculatePower()
+      nextTick(() => {
+        drawEnhancedCurves()
+      })
     })
     
     return {
@@ -190,6 +326,11 @@ export default {
       testType,
       power,
       powerChart,
+      enhancedChart,
+      showEnhancedCurves,
+      showSmallEffect,
+      showMediumEffect,
+      showLargeEffect,
       getPowerClass,
       getPowerInterpretation
     }
@@ -318,6 +459,42 @@ export default {
 .power-recommendations li {
   margin-bottom: 8px;
   color: #333;
+}
+
+.enhanced-curves {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #F8F9FA;
+  border-radius: 8px;
+}
+
+.curve-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.curve-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.toggle-curves-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.toggle-curves-btn:hover {
+  background: #0056B3;
 }
 
 @media (max-width: 768px) {

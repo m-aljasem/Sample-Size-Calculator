@@ -163,15 +163,15 @@ export const ratesCalculators = [
 
 // Default input values
 export const defaultInputs = {
-  estimateProportion: { alpha: 0.05, p: 0.5, d: 0.05 },
-  estimateMean: { alpha: 0.05, sd: 15, d: 2 },
-  estimateDiff2Proportions: { alpha: 0.05, p1: 0.5, p2: 0.4, d: 0.05 },
-  estimateOddsRatio: { alpha: 0.05, p2: 0.3, or: 2, epsilon: 0.2 },
-  estimateRelativeRisk: { alpha: 0.05, p2: 0.2, rr: 2, epsilon: 0.2 },
-  estimateCorrelation: { alpha: 0.05, r: 0.3 },
-  testProportion: { alpha: 0.05, beta: 0.2, p0: 0.5, pa: 0.6 },
-  test2Proportions: { alpha: 0.05, beta: 0.2, p1: 0.6, p2: 0.4 },
-  test2Means: { alpha: 0.05, beta: 0.2, mu1: 100, mu2: 95, sd1: 15, sd2: 15 },
-  test2Correlations: { alpha: 0.05, beta: 0.2, r1: 0.5, r2: 0.3 },
-  test2Rates: { alpha: 0.05, beta: 0.2, lambda1: 0.05, lambda2: 0.03, k: 1 }
+  estimateProportion: { alpha: 0.05, p: 0.5, d: 0.05, dropoutRate: 0 },
+  estimateMean: { alpha: 0.05, sd: 15, d: 2, dropoutRate: 0 },
+  estimateDiff2Proportions: { alpha: 0.05, p1: 0.5, p2: 0.4, d: 0.05, dropoutRate: 0 },
+  estimateOddsRatio: { alpha: 0.05, p2: 0.3, or: 2, epsilon: 0.2, dropoutRate: 0 },
+  estimateRelativeRisk: { alpha: 0.05, p2: 0.2, rr: 2, epsilon: 0.2, dropoutRate: 0 },
+  estimateCorrelation: { alpha: 0.05, r: 0.3, dropoutRate: 0 },
+  testProportion: { alpha: 0.05, beta: 0.2, p0: 0.5, pa: 0.6, twoTailed: true, dropoutRate: 0 },
+  test2Proportions: { alpha: 0.05, beta: 0.2, p1: 0.6, p2: 0.4, twoTailed: true, allocationRatio: 1, dropoutRate: 0 },
+  test2Means: { alpha: 0.05, beta: 0.2, mu1: 100, mu2: 95, sd1: 15, sd2: 15, twoTailed: true, allocationRatio: 1, dropoutRate: 0 },
+  test2Correlations: { alpha: 0.05, beta: 0.2, r1: 0.5, r2: 0.3, twoTailed: true, allocationRatio: 1, dropoutRate: 0 },
+  test2Rates: { alpha: 0.05, beta: 0.2, lambda1: 0.05, lambda2: 0.03, k: 1, twoTailed: true, dropoutRate: 0 }
 }

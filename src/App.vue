@@ -41,6 +41,18 @@
             :sample-size="getCurrentSampleSize()"
             :effect-size="getCurrentEffectSize()" />
           
+          <PostHocPowerAnalysis 
+            v-if="activeFeature === 'posthoc'" />
+          
+          <SensitivityAnalysis 
+            v-if="activeFeature === 'sensitivity'" />
+          
+          <ScenarioComparison 
+            v-if="activeFeature === 'scenarios'" />
+          
+          <EffectSizeHelpers 
+            v-if="activeFeature === 'effectsize'" />
+          
           <CalculationHistory 
             v-if="activeFeature === 'history'"
             @load-calculation="loadCalculation" />
@@ -94,6 +106,10 @@ import AppFooter from './components/AppFooter.vue'
 // PWA components temporarily hidden
 import PWAInstallPrompt from './components/PWAInstallPrompt.vue'
 import PowerAnalysis from './components/PowerAnalysis.vue'
+import PostHocPowerAnalysis from './components/PostHocPowerAnalysis.vue'
+import SensitivityAnalysis from './components/SensitivityAnalysis.vue'
+import ScenarioComparison from './components/ScenarioComparison.vue'
+import EffectSizeHelpers from './components/EffectSizeHelpers.vue'
 import CalculationHistory from './components/CalculationHistory.vue'
 import PWAFeatures from './components/PWAFeatures.vue'
 import DataVisualization from './components/DataVisualization.vue'
@@ -115,6 +131,10 @@ export default {
     AppFooter,
     PWAInstallPrompt,
     PowerAnalysis,
+    PostHocPowerAnalysis,
+    SensitivityAnalysis,
+    ScenarioComparison,
+    EffectSizeHelpers,
     CalculationHistory,
     PWAFeatures,
     DataVisualization,

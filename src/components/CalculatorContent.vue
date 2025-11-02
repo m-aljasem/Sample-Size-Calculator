@@ -34,6 +34,77 @@
                 @input="updateInput(input.name, $event.target.value)"
                 :placeholder="input.placeholder">
             </div>
+            
+            <!-- Advanced Options -->
+            <div class="advanced-options" v-if="showAdvancedOptions">
+              <!-- One/Two-Tailed Toggle (for hypothesis testing) -->
+              <div class="input-group" v-if="isHypothesisTest">
+                <label class="input-label">
+                  Test Type
+                  <span class="tooltip" data-tooltip="Two-tailed tests are standard for most research. One-tailed tests assume a directional hypothesis and require smaller sample sizes.">?</span>
+                </label>
+                <div class="toggle-group">
+                  <button 
+                    class="toggle-button" 
+                    :class="{ active: !inputs[activeCalculator].twoTailed }"
+                    @click="updateInput('twoTailed', false)">
+                    One-Tailed
+                  </button>
+                  <button 
+                    class="toggle-button" 
+                    :class="{ active: inputs[activeCalculator].twoTailed !== false }"
+                    @click="updateInput('twoTailed', true)">
+                    Two-Tailed
+                  </button>
+                </div>
+                <small v-if="inputs[activeCalculator].twoTailed === false" class="warning-text">
+                  ⚠️ One-tailed assumes directional hypothesis
+                </small>
+              </div>
+              
+              <!-- Allocation Ratio (for two-group tests) -->
+              <div class="input-group" v-if="isTwoGroupTest">
+                <label class="input-label">
+                  Allocation Ratio (n₂:n₁)
+                  <span class="tooltip" data-tooltip="Ratio of sample size in group 2 to group 1. Default is 1:1 (equal groups).">?</span>
+                </label>
+                <input 
+                  type="number" 
+                  class="input-field"
+                  step="0.1"
+                  min="0.1"
+                  :value="inputs[activeCalculator].allocationRatio || 1"
+                  @input="updateInput('allocationRatio', $event.target.value)"
+                  placeholder="1">
+                <small class="info-text" v-if="inputs[activeCalculator].allocationRatio && inputs[activeCalculator].allocationRatio !== 1">
+                  Group 2 will have {{ (inputs[activeCalculator].allocationRatio || 1).toFixed(1) }}x the size of Group 1
+                </small>
+              </div>
+              
+              <!-- Attrition/Dropout Rate -->
+              <div class="input-group">
+                <label class="input-label">
+                  Expected Dropout Rate (%)
+                  <span class="tooltip" data-tooltip="Percentage of participants expected to drop out. Sample size will be adjusted automatically.">?</span>
+                </label>
+                <input 
+                  type="number" 
+                  class="input-field"
+                  step="1"
+                  min="0"
+                  max="99"
+                  :value="(inputs[activeCalculator].dropoutRate || 0) * 100"
+                  @input="updateInput('dropoutRate', ($event.target.value / 100) || 0)"
+                  placeholder="0">
+                <small class="info-text" v-if="inputs[activeCalculator].dropoutRate && inputs[activeCalculator].dropoutRate > 0">
+                  Sample size will be increased by {{ ((1 / (1 - inputs[activeCalculator].dropoutRate) - 1) * 100).toFixed(0) }}% to account for dropouts
+                </small>
+              </div>
+            </div>
+            
+            <button class="toggle-advanced-button" @click="showAdvancedOptions = !showAdvancedOptions">
+              {{ showAdvancedOptions ? '▼ Hide' : '▶ Show' }} Advanced Options
+            </button>
           </div>
         </div>
 
@@ -47,6 +118,19 @@
               📤 {{ $t('app.export.title') }}
             </button>
           </div>
+          <!-- Validation Warnings -->
+          <div v-if="validationWarnings.length > 0" class="warnings-container">
+            <div 
+              v-for="(warning, idx) in validationWarnings" 
+              :key="idx"
+              class="warning-message"
+              :class="warning.severity">
+              <span v-if="warning.severity === 'warning'">⚠️</span>
+              <span v-else>ℹ️</span>
+              {{ warning.message }}
+            </div>
+          </div>
+          
           <div v-if="calculatedResult.error" class="error-message">
             ⚠️ {{ calculatedResult.error }}
           </div>
@@ -67,6 +151,9 @@
               <div class="result-value">
                 {{ calculatedResult.value }} 🎯
               </div>
+              <div v-if="calculatedResult.valueAdjusted" class="result-adjusted">
+                <strong>Adjusted for {{ (calculatedResult.dropoutRate * 100).toFixed(0) }}% dropout:</strong> {{ calculatedResult.valueAdjusted }} 🎯
+              </div>
               <div class="result-note">{{ calculatedResult.note || $t('app.calculators.roundedUp') }}</div>
             </div>
           </div>
@@ -76,6 +163,8 @@
           </div>
         </div>
       </div>
+
+      <FormulaDisplay :calculator-key="activeCalculator" />
 
       <div class="usage-info" v-if="currentCalculator.usage">
         <div class="usage-title">{{ $t('app.calculators.usage') }}</div>
@@ -90,22 +179,27 @@
       v-if="showExportModal"
       :show-export="showExportModal"
       :calculator-data="currentCalculator"
+      :calculator-key="activeCalculator"
+      :input-values="inputs[activeCalculator]"
       :result="calculatedResult"
       @close="showExportModal = false" />
   </main>
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import FormulaDisplay from './FormulaDisplay.vue'
 import { estimationCalculators, hypothesisCalculators, ratesCalculators } from '../data/calculators.js'
 import * as calculators from '../utils/calculators.js'
 import ExportResults from './ExportResults.vue'
+import { validateInputs, validateCalculationResult } from '../utils/validation.js'
 
 export default {
   name: 'CalculatorContent',
   components: {
-    ExportResults
+    ExportResults,
+    FormulaDisplay
   },
   props: {
     activeCalculator: {
@@ -121,6 +215,7 @@ export default {
   setup(props, { emit }) {
     const { t } = useI18n()
     const showExportModal = ref(false)
+    const showAdvancedOptions = ref(false)
     
     const currentCalculator = computed(() => {
       const calculator = [...estimationCalculators, ...hypothesisCalculators, ...ratesCalculators]
@@ -156,6 +251,14 @@ export default {
       }
     })
     
+    const isHypothesisTest = computed(() => {
+      return ['testProportion', 'test2Proportions', 'test2Means', 'test2Correlations', 'test2Rates'].includes(props.activeCalculator)
+    })
+    
+    const isTwoGroupTest = computed(() => {
+      return ['test2Proportions', 'test2Means', 'test2Correlations', 'test2Rates'].includes(props.activeCalculator)
+    })
+    
     const calculatedResult = computed(() => {
       switch(props.activeCalculator) {
         case 'estimateProportion':
@@ -185,15 +288,25 @@ export default {
       }
     })
     
+    const validationWarnings = computed(() => {
+      const validation = validateInputs(props.inputs[props.activeCalculator], props.activeCalculator)
+      const resultValidation = validateCalculationResult(calculatedResult.value)
+      return [...validation.warnings, ...resultValidation.warnings]
+    })
+    
     const updateInput = (inputName, value) => {
       emit('update-input', props.activeCalculator, inputName, parseFloat(value) || 0)
     }
     
     return {
       showExportModal,
+      showAdvancedOptions,
       currentCalculator,
       calculatedResult,
-      updateInput
+      updateInput,
+      isHypothesisTest,
+      isTwoGroupTest,
+      validationWarnings
     }
   }
 }

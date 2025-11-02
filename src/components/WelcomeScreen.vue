@@ -75,6 +75,30 @@
             <p>Advanced power analysis tools and visualizations for your statistical studies</p>
           </div>
           
+          <div class="advanced-card" @click="$emit('open-feature', 'posthoc')">
+            <div class="advanced-icon">🔍</div>
+            <h4>Post-Hoc Power Analysis</h4>
+            <p>Calculate the achieved power of your completed study based on actual sample size and observed effects</p>
+          </div>
+          
+          <div class="advanced-card" @click="$emit('open-feature', 'sensitivity')">
+            <div class="advanced-icon">📈</div>
+            <h4>Sensitivity Analysis</h4>
+            <p>Explore how sample size changes when parameters vary - perfect for planning with uncertainty</p>
+          </div>
+          
+          <div class="advanced-card" @click="$emit('open-feature', 'scenarios')">
+            <div class="advanced-icon">📊</div>
+            <h4>Scenario Comparison</h4>
+            <p>Compare multiple study designs side-by-side - essential for grant proposals</p>
+          </div>
+          
+          <div class="advanced-card" @click="$emit('open-feature', 'effectsize')">
+            <div class="advanced-icon">📐</div>
+            <h4>Effect Size Helpers</h4>
+            <p>Convert from published statistics, use field-specific benchmarks, and calculate effect sizes</p>
+          </div>
+          
           <div class="advanced-card" @click="$emit('open-feature', 'bayesian')">
             <div class="advanced-icon">🧠</div>
             <h4>Bayesian Analysis</h4>

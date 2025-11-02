@@ -25,3 +25,8 @@ pnpm-debug.log*
 # OS generated files
 Thumbs.db
 .vercel
+/mobile-app/node_modules
+/mobile-app/dist
+/mobile-app/platforms
+/mobile-app/plugins
+/mobile-app/www

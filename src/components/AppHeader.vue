@@ -38,6 +38,30 @@
           </button>
           <button 
             class="feature-button" 
+            @click="$emit('open-feature', 'posthoc')"
+            title="Post-Hoc Power Analysis">
+            🔍
+          </button>
+          <button 
+            class="feature-button" 
+            @click="$emit('open-feature', 'sensitivity')"
+            title="Sensitivity Analysis">
+            📈
+          </button>
+          <button 
+            class="feature-button" 
+            @click="$emit('open-feature', 'scenarios')"
+            title="Scenario Comparison">
+            📊
+          </button>
+          <button 
+            class="feature-button" 
+            @click="$emit('open-feature', 'effectsize')"
+            title="Effect Size Helpers">
+            📐
+          </button>
+          <button 
+            class="feature-button" 
             @click="$emit('open-feature', 'bayesian')"
             title="Bayesian Analysis">
             🧠
